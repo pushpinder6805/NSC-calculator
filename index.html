@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NSC Calculator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom CSS */
+        #nscCalculator {
+            text-align: center;
+            margin: auto;
+            width: 50%;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        #result {
+            text-align: center;
+            margin-top: 20px;
+        }
+        button {
+            border-radius: 12px;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="text-center mt-4">National Savings Certificate (NSC) Calculator</h1>
+    <form id="nscCalculator">
+        <div class="form-group row mt-4">
+            <label for="investmentAmount" class="col-sm-4 col-form-label">Investment Amount (in Rs.):</label>
+            <div class="col-sm-8">
+                <input type="number" id="investmentAmount" name="investmentAmount" class="form-control" required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="interestRate" class="col-sm-4 col-form-label">Interest Rate (in %):</label>
+            <div class="col-sm-8">
+                <input type="number" id="interestRate" name="interestRate" class="form-control" required>
+            </div>
+        </div>
+        <div class="form-group text-center mt-4">
+            <button type="button" class="btn btn-primary px-5" onclick="calculateMaturity()">Calculate Maturity</button>
+        </div>
+    </form>
+    
+    <div id="result"></div>
+
+    <script>
+        function calculateMaturity() {
+            // Retrieve input values
+            var investmentAmount = document.getElementById("investmentAmount").value;
+            var interestRate = document.getElementById("interestRate").value;
+
+            // Calculate maturity value
+            var maturityValue = investmentAmount * Math.pow(1 + interestRate / 100, 5);
+            
+            // Display the result
+            document.getElementById("result").innerHTML = "<p>Maturity Value: Rs. " + maturityValue.toFixed(2) + "</p>";
+        }
+    </script>
+</body>
+</html>
